@@ -1,0 +1,873 @@
+//Body HTML
+body {
+	font-family: $open-sans-condensed;
+	background-color:$eggshell;
+	font-size:1.3rem;
+	color:$black;
+
+	h1,h2,h3,h4,h5 {
+		font-family: $open-sans;
+		text-transform: uppercase;
+		font-weight: 700;
+		color:$brand-secondary;
+	}
+
+	//footer
+	#wrapper-footer {
+		background: $brand-dark;
+
+		#secondary-menu {
+			flex-direction: column;
+			font-size: 1.4rem;
+			margin-bottom: 30px;
+			display: none;
+			position:relative;
+
+			@include media-breakpoint-up(xl) {
+				flex-direction: row;
+				display: inline-block;
+			}
+
+			li {
+				@include media-breakpoint-up(xl) {
+					margin:0 10px;
+					font-size: 1rem;
+					min-width: 4rem;
+
+					a {
+						&:hover {
+							text-decoration: none;
+						}
+					}
+
+					&:first-child {
+						margin-left:0;
+					}
+				}
+				ul.sub-menu {
+					position:absolute;
+					padding-left:0;
+				}
+			}
+		}
+		.site-info {
+			p {
+				color:white;
+			}
+		}
+	}
+	#page-main {
+		transition: margin-left .5s;
+		position:relative;	
+	}
+
+	.menu-item {
+		float:none;
+		display: block;
+		text-transform: uppercase;
+
+		@include media-breakpoint-up(xl) {
+			float:left;
+		}
+	}
+}
+
+//Slide Mobile Navigation
+.sidenav {
+	height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: $brand-dark;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px; /* Place content 60px from the top */
+    padding-left:0;
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav  */
+
+    a {
+    	padding: 8px 8px 8px 32px;
+	    text-decoration: none;
+	    font-size: 25px;
+	    color: $brand-primary;
+	    display: block;
+	    transition: 0.3s
+    }
+}
+.navbar {
+	background: $brand-dark;
+
+	a.nav-expander {
+		color:$brand-primary !important;
+		font-size:1.2rem;
+		width:71px;
+		float:left;
+		margin-right:10px;
+
+		@include media-breakpoint-up(xl) {
+			display: none;
+		}
+	}
+
+	@include media-breakpoint-up(xl) {
+		display: none;
+	}
+}
+
+//mobile menu specific css
+.navbar-mobile {
+
+	.menu-primary-menu-container {
+		.logo {
+			margin-bottom: 25px;
+
+			img {
+				width:200px;
+				height:auto;
+				display:block;
+				margin-left:25px;
+			}
+		}
+		ul.dropdown-menu {
+			position: relative;
+			width:100%;
+			background-color: transparent;
+			background-clip: border-box;
+			padding:0;
+			margin:0;
+
+			ul {
+				background-color: lighten($brand-dark,8%);
+				padding-left:10px;
+
+				@include media-breakpoint-up(xl) {
+				}
+				li {
+					a {
+
+						&:hover {
+							background-color:transparent;
+						}
+					}
+					&:hover {
+						background-color:transparent;
+					}
+				}
+			}
+		}
+	}
+}
+//desktop menu specific css
+.navbar-desktop {
+	position: relative;
+	background: $brand-dark;
+	display:none;
+
+	.logo {
+		position: absolute;
+	}
+	.menu-primary-menu-container {
+		position: absolute;
+		right: 0;
+		line-height: 63px;
+
+		ul {
+			position: relative;
+
+			li {
+				transition: background-color 0.2s linear;
+
+				a {
+					font-size:1.3rem;
+
+					&:hover {
+						background:transparent;
+						text-decoration:none;
+					}
+				}
+				&:hover {
+					background:$brand-secondary;
+				}
+			}
+
+			ul.dropdown-menu {
+				background: $brand-secondary;
+				position: absolute;
+				top:80px;
+				left:0;
+				border-radius:0;
+				border:0;
+				padding:0;
+
+				li {
+					a {
+						&:hover {
+							background-color:transparent;
+						}
+					}
+					&:hover {
+						background-color:$brand-secondary;
+					}
+				}
+
+				ul.dropdown-menu {
+					margin-left:0;
+					padding-left:10px;
+				}
+			}
+		}
+	}
+
+	@include media-breakpoint-up(xl) {
+		display:block;
+		height:84px;
+	}
+}
+
+//gallery slider ACF 
+.slide-box {
+	position: relative;
+
+	.rslides {
+		list-style-type: none;
+		position: relative;
+		list-style: none;
+		overflow: hidden;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+
+		li {
+			-webkit-backface-visibility: hidden;
+			position: absolute;
+			display: none;
+			width: 100%;
+			left: 0;
+			top: 0;
+
+			&:first-child {
+				position:relative;
+				display: block;
+				float:left;
+			}
+
+			.rslide-image {
+				display: block;
+				height:40vh;
+				float:left;
+				width:100%;
+				border:0;
+				background-position: center;
+				background-size:cover;
+
+				@include media-breakpoint-up(xl) {
+					height:70vh;
+				}
+			}
+		}
+	}
+	.rslides_nav {
+		position:absolute;
+		top: 46%;
+		z-index: 5;
+		display:block;
+		background: $brand-dark;
+		padding:.3rem;
+		font-size:1.8rem;
+
+	}
+	.rslides1_nav.prev {
+		left:1%;
+	}
+	.rslides1_nav.next {
+		right: 1%;	
+	}
+}
+//text and button for the gallery header
+.hero-box {
+	position: absolute;
+	z-index: 3;
+	width:100%;
+	height:100%;
+	background-color:rgba($brand-dark,0.6);
+	transition: background-color 0.4s linear;
+
+	&:hover {
+	}
+	.hero-content {
+		position:relative;
+		top:50%;
+		transform:translateY(-50%);
+	}
+
+	h1, h2 {
+		text-align: center;
+		padding: 0 5%;
+		text-shadow: 0 2px #000;
+	}
+	h1 {
+		font-size: 2rem;
+		color:$brand-primary;
+		font-family: $poppins;
+		font-weight: 600;
+
+		@include media-breakpoint-up(xl) {
+			font-size:3rem;
+		}
+	}
+	h2 {
+		font-size:1.4rem;
+		color:$eggshell;
+		text-transform: none;
+
+		@include media-breakpoint-up(xl) {
+			font-size:2.4rem;
+		}
+	}
+	a.hero-btn {
+		background:$brand-secondary;
+		color:white;
+		margin-top:0.7rem;
+	}
+}
+//social items above the footer
+#social-connect {
+	background:lighten($brand-dark,20%);
+	font-size:2rem;
+	color:$eggshell;
+
+	a {
+		margin: 0 5px;
+		transition: color 0.3s linear;
+
+		&:hover {
+			color:lighten($brand-primary,40%);
+		}
+	}
+	p {
+		margin-bottom:5px;
+	}
+}
+//Promo Squares on Front Page
+#promo-squares {
+	background-color:$brand-secondary;
+	padding:5vh 0;
+
+	h3 {
+		color:white;
+		margin-bottom:20px;
+	}
+
+	.promo-item {
+		position:relative;
+		margin-bottom: 2vh;
+
+		.promo-image-box {
+			height:330px;
+			width:auto;
+			position:relative;
+			background-size:cover;
+			background-position:center center;
+
+			@include media-breakpoint-only(md) {
+				height:640px;
+			}
+			@include media-breakpoint-only(lg) {
+				height:300px;
+			}
+
+			.overlay {
+				width:100%;
+				height:100%;
+				background-color:rgba($brand-dark,0.6);
+				top:0;
+				left:0;
+				position: absolute;
+				opacity:0;
+				transition: opacity 0.3s linear;
+				cursor: pointer;
+
+				@include media-breakpoint-up(xl) {
+					&:hover {
+						opacity:1;
+					}
+
+				}
+			}
+			
+			.promo-image-text {
+				position:relative;
+				top:50%;
+				transform:translateY(-50%);
+				z-index: 3;
+				opacity:0;
+				transition: opacity 0.3s linear;
+				cursor: pointer;
+
+				h5 {
+					color:white;
+					font-weight: bold;
+					font-size:1.7rem;
+					text-transform: uppercase;
+				}
+				.promo-btn {
+					color:white;
+					border:1px solid white;
+					border-radius:0;
+					margin-top:3vh;
+				}
+			}
+		}
+	}
+}
+#promos {
+	padding:5vh 0;
+
+	h3 {
+		color:white;
+		margin-bottom:20px;
+	}
+
+	.promo-item {
+		position:relative;
+		margin-bottom: 2vh;
+
+		.promo-image-box {
+			height:300px;
+			width:auto;
+			position:relative;
+			background-size:cover;
+			background-position:center center;
+
+			.overlay {
+				width:100%;
+				height:100%;
+				background-color:rgba($brand-dark,0.6);
+				top:0;
+				left:0;
+				position: absolute;
+				opacity:0;
+				transition: opacity 0.3s linear;
+				cursor: pointer;
+
+				@include media-breakpoint-up(xl) {
+					&:hover {
+						opacity:1;
+					}
+
+				}
+			}
+			
+			.promo-image-text {
+				position:relative;
+				top:50%;
+				transform:translateY(-50%);
+				z-index: 3;
+				opacity:0;
+				transition: opacity 0.3s linear;
+				cursor: pointer;
+
+				h5 {
+					color:white;
+					font-weight: bold;
+					font-size:1.7rem;
+					text-transform: uppercase;
+				}
+				.promo-btn {
+					color:white;
+					border:1px solid white;
+					border-radius:0;
+					margin-top:3vh;
+				}
+			}
+		}
+	}
+}
+//Menu for Restaurants
+.course-title {
+	margin-top:70px;
+	border-bottom:1px dotted $brand-secondary;
+	padding-bottom:10px;
+}
+.item-title {
+	font-family: $poppins;
+	text-transform:capitalize;
+	font-weight:600;
+	margin-bottom:0.5rem;
+}
+.item-description {
+	p {
+		font-size:1.3rem;
+		text-transform: none;
+	}
+}
+.menu-item-stuff {}
+.menu-price-chunk {
+	p {
+		margin-bottom:0;
+		font-size:1rem;
+	}
+}
+//Events on Front Page
+#events-front-page {
+	padding: 5vh 0;
+
+	.event-box {
+		margin-bottom:15px;
+		position:relative;
+
+		hr {
+			border-bottom: 1px dotted #8c8b8b;
+			margin: 0;
+
+			@include media-breakpoint-up(md) {
+				border:none;
+			}
+		}
+		a {
+			text-decoration: none;
+			display: block;
+			width:100%;
+			height:100%;
+
+			div {
+				background-size: 185%;
+				background-position: center;
+				transition: background-size 0.9s ease-in;
+			}
+			@include media-breakpoint-up(xl) {
+				&:hover {
+					> div {
+						background-size:210%;
+					}
+				}
+			}
+
+			.month {
+				background-color:$brand-primary;
+				line-height:1.5rem;
+				color:$black;
+
+				@include media-breakpoint-up(md) {
+					background:none;
+					line-height: normal;
+				}
+			}
+			.date {
+				font-size:2rem;
+				line-height: 1.7rem;
+				color: $brand-secondary;
+				background-color:$eggshell;
+
+				@include media-breakpoint-up(md) {
+					background:none;
+				}
+			}
+			.day {
+				background-color:$eggshell;
+				color:$black;
+
+				@include media-breakpoint-up(md) {
+					background:none;
+				}
+			}
+			p {
+				color:$black;
+			}
+		}
+	}
+	.event-text {
+		
+		@include media-breakpoint-up(md) {
+			background: rgba($eggshell,0.8);
+			height:75px;
+			position:absolute;
+			width:80%;
+			padding:5px;
+			bottom: 30px;
+		}
+		@include media-breakpoint-only(lg) {
+			max-width: 400px;
+		}
+		.calendar-box {
+			font-size:0.8rem;
+			width: 64px;
+			text-align: center;
+			border:1px solid $brand-dark;
+			position: absolute;
+		
+			@include media-breakpoint-up(md) {
+				border:none;
+			}
+		}
+		.event-description {
+			padding-left:77px;
+			padding-top:10px;
+
+			@include media-breakpoint-only(lg) {
+				padding-left:60px;
+			}
+
+			h4 {
+				color: $black;
+				margin-bottom: 0;
+				font-weight: 400;
+				font-family: $poppins;
+				overflow:hidden;
+				text-overflow: ellipsis;
+				max-height: 22px;
+			}
+			p {
+				margin-bottom: 0;
+			}
+		}
+	}
+	.featured-event {
+		height: 75px;
+
+		@include media-breakpoint-down(sm) {
+			background:none !important;
+		}
+
+		@include media-breakpoint-up(md) {
+			height:500px;
+		}
+
+		@include media-breakpoint-up(xl) {
+			height:600px;
+		}
+		
+	}
+	.sub-event {
+		height:75px;
+
+		@include media-breakpoint-down(sm) {
+			background:none !important;
+		}
+
+		@include media-breakpoint-up(md) {
+			height:500px;
+		}
+
+		@include media-breakpoint-up(xl) {
+			height:293px;
+		}
+		.event-description {
+			h4 {
+				@include media-breakpoint-up(xl) {
+					font-size: 0.8rem;
+					max-height: 26px;
+				}
+			}
+		}
+	}
+}
+
+//Events Page
+.page-template-events-page {
+	.event-box {
+		a {
+			.featured-event {
+				height: 330px;
+				width: auto;
+				margin-bottom: 2vh;
+			}
+		}
+	}
+	.event-text {
+		.calendar-box {
+			font-size:0.8rem;
+			width: 64px;
+			text-align: center;
+			border:1px solid $brand-dark;
+			position: absolute;
+		
+			@include media-breakpoint-up(lg) {
+				border:none;
+				width:auto;
+				position:static;
+				text-align: left;
+			}
+
+			.month {
+				background-color:$brand-primary;
+				line-height:1.5rem;
+				color:$black;
+
+				@include media-breakpoint-up(lg) {
+					background:none;
+					line-height: normal;
+					font-size: 2rem;
+					display: inline-block;
+				}
+			}
+			.date {
+				font-size:2rem;
+				line-height: 1.7rem;
+				color: $brand-secondary;
+				background-color:$eggshell;
+
+				@include media-breakpoint-up(lg) {
+					background:none;
+					display: inline-block;
+					font-size: 2rem;
+					padding-left:10px;
+				}
+			}
+			.day {
+				background-color:$eggshell;
+				color:$black;
+
+				@include media-breakpoint-up(lg) {
+					display: none;
+				}
+			}
+			p {
+				color:$black;
+			}
+		}
+	}
+	.event-description {
+		padding-left:77px;
+
+		@include media-breakpoint-only(lg) {
+			padding-left:60px;
+		}
+
+		h4 {
+			color: $black;
+			margin-bottom: 0;
+			font-weight: 400;
+			font-family: $poppins;
+			overflow:hidden;
+			text-overflow: ellipsis;
+			max-height: 22px;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+	.main-event {
+		.event-description {
+			@include media-breakpoint-up(lg) {
+				padding-left: 0;
+			}
+			h4 {
+				max-height: none;
+
+				@include media-breakpoint-up(lg) {
+					font-size:2rem;
+				}
+			}
+		}
+		hr {
+			border-bottom: 1px dotted #8c8b8b;
+			margin: 0;
+
+			@include media-breakpoint-up(md) {
+				border:none;
+			}
+		}
+		a.event-btn {
+			color:$black;
+			border: 1px solid $black;
+			border-radius:0;
+			margin-top: 3vh;
+			width:100%;
+			max-width: 330px;
+			text-transform: uppercase;
+
+			&:hover {
+				background-color: darken($white,15%);
+			}
+		}
+		a.buy-btn {
+			background-color: $brand-secondary;
+			color: #fff;
+
+			&:hover {
+				background-color:lighten($brand-secondary,15%);
+			}
+		}
+	}
+}
+
+//maintenance page
+.wrap {
+	p {
+		color:white;
+	}
+}
+
+//breadcrumb styles
+.breadcrumb-link {
+	color: $brand-secondary;
+	font-size:1.2rem;
+}
+.breadcrumb-current {
+	font-weight:bold;
+	font-size:1.2rem;
+}
+.breadcrumb-line {
+	border-top:1px dotted #8c8b8b;
+	margin:8px 0;
+}
+
+//Preloader
+#loader-wrapper {
+	background-color: $brand-dark;
+	width: 100%;
+	height: 100%;
+	position:fixed;
+	z-index: 9999;
+
+	#loader {
+		z-index:10000;
+		width: 300px;
+		height:90px;
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform:translate(-50%,-50%);
+
+		#preload-img {
+			animation: pulse 8s infinite;
+		}
+	}
+}
+.no-js #loader-wrapper {
+    display: none;
+}
+//LOADED Preloader
+.loaded #loader-wrapper  {
+	background-color: $eggshell;
+	opacity:0;
+	visibility: hidden;
+	transition: all 0.3s 0.6s ease-out;
+
+	#loader {
+		opacity:0;
+		transition: all 0.3s ease-out;
+	}
+}
+
+//Animation Keyframes
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+	}
+	25% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(0.95);
+	}
+	75% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0.95);
+	}
+}
